@@ -3,7 +3,7 @@ img.face {
   filter: alpha(opacity=40); /* For IE8 and earlier */ 
   border:1px solid #689AD3; 
   float:left; 
-  padding:2px;
+  padding:3px;
   margin:3px 3px 3px 0px;
 }
-img.face:hover {opacity: 1.0;filter: alpha(opacity=100); /* For IE8 and earlier */ padding:2px; border:1px solid #689AD3}
+img.face:hover {opacity: 1.0;filter: alpha(opacity=100); /* For IE8 and earlier */ padding:3px; border:1px solid #689AD3}

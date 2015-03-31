@@ -1,4 +1,4 @@
-img .face {
+img.face {
   opacity: 0.4;
   filter: alpha(opacity=40); /* For IE8 and earlier */ 
   border:1px solid #689AD3; 
@@ -6,4 +6,4 @@ img .face {
   padding:2px;
   margin:3px 3px 3px 0px;
 }
-img .face:hover {opacity: 1.0;filter: alpha(opacity=100); /* For IE8 and earlier */ padding:2px; border:1px solid #689AD3}
+img.face:hover {opacity: 1.0;filter: alpha(opacity=100); /* For IE8 and earlier */ padding:2px; border:1px solid #689AD3}

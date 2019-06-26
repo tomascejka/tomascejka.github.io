@@ -1,101 +1,124 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Lucida Sans Typewriter, Lucida Console, monaco, Bitstream Vera Sans Mono, monospace;
+}
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/default.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  min-height: 300px;
+  background-color:#fff;
+  border-right: 1px dashed #ccc;
+}
+.column2 {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  min-height: 300px;
+  background-color:#fff;
+  border-right: 1px dashed #ccc;
+}
+.row {
+	margin: auto 10%;
+	margin-top: 8%;
+	margin-bottom: 3%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-    <title>TOMÁŠ ČEJKA, CV - JAVA DEVELOPER</title>
-  </head>
+hr {border: 1px dashed #ccc;}
 
-  <body>
+.detail {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;	
+}
 
-    <header>
-      <div class="container">
-        <h1>TOMÁŠ ČEJKA - JAVA DEVELOPER</h1>
-        <h2>KDO JSEM</h2>
-        <img class="face" src="images/avatar.jpg" style="width:120px;height:120px"/>
-        <p>Java programátor se zaměřením na vývoj J2EE aplikací. Dlouholetý vývojář frontendu, nyní backendu, který preferuji pro jeho snadnější udržovatelnost a lepší testovatelnost.</p>
-        <p>Používal jsem Eclipse IDE nebo STS SpringSource - nyní Netbeans. Dlouholetý uživatel Windows, poté GNU Linux (Xubuntu ve Wincor) - nyní opět Windows (Styrax). Rád se vzdělávám/zkouším nové věci a technologie. Nebojím se změn, někdy je sám vyhledávám (migrace z Windows na GNU Linux při nástupu do Wincor-Nixdorf).</p>
-        <p>Rád plánuji. Nejvíc práce udělám ráno (a poté večer - abych se vyhnul dennímu komunikačnímu šumu/vyrušování), kdy řeším složitější úkoly (a večer je dotahuji). Začínám v 5 hod. administrativou, abych od 6 hod. mohl programovat. Nemám problém pracovat v noci (mám rád klid na práci).</p>
-	<p>Je mi 38 let, jsem ženatý, šťastný otec (Julinka, Johanka a Justýnka) a můžeme si tykat.</p>
-        <section id="downloads">
-          <a href="https://github.com/tomascejka" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-          <!--a href="http://about.tomascejka.eu/" class="btn btn-github">View on personal page</a-->
-          <a href="https://cz.linkedin.com/in/tomascejka/" class="btn btn-github">View on linkedin</a>
-          
-        </section>
-      </div>     
-    </header>
+.hobby {
+	list-style-type: circle;
+	margin:0%; padding:0% 5.5%;
+}
 
-    <div class="container">
-      <h2>CO NABÍZÍM</h2>
-      <p>Jsem pracovitý, flexibilní a dotáhnu věci do konce. Preferuji jednoduchost před komplexností. Javadoc a dokumentaci pro vývojáře považuji za samozřejmost. Ideálně praktikuji TDD a D.R.Y přístup (miluji automatizaci - píšu vlastní bash scripty a maven archetypy, xslt šablony; dále používám jenkins, maven pluginy, <strike title="už je to dávno, v3">glassfish asadmin a ant</strike>).</p>
-      <p>Mám rád, když dostanu prostor pro realizaci vlastních nápadů. Nemám problém pracovat sám nebo v týmu. Nejlépe se mi pracuje, když dostanu volnost - rád navrhuji, předelávám/zjednodušuji a zlepšuji.</p>
-      <section id="skills-container">
-	<table id="skills">
-		<thead><tr>
-			<th>OS</th><th>Development</th><th>Frameworks</th><th>Tools</th><th>Study</th><th>Future</th>
-			<th title="aktivně nepoužívám/setkání v různých firmách/projektech">Poorly</th>
-		</tr></thead>
-		<tbody><tr>
-			<td>GNU Linux, Windows</td>
-			<td>Java, SQL, WSDL, XSD, XML, XPath, Hibernate</td>
-			<td>JUnit, JAXB, JAX-WS, EJB</td>
-			<td>Azure (API Management/portal), Jenkins, Nexus, Flyway, Maven, SVN, Git, Wildlfly, H2, bash</td>
-			<td>Azure (jak si ulehčit CI/CD do Azure)</td>
-			<td>Docker, Kubernetes, Ansible, Spring MVC/Data, Thymeleaf</td>
-			<td>Spring framework (Core/DI),Tomcat, Glassfish, JCA, MyBatis, Liquibase, DbMaintain, Artifactory, Derby, DbUnit, Unitils, XSLT, XSL-FO, OSGI,HTML, Javascript, Ajax, CSS, jQuery</td>
-		</tr></tbody>
-		<tfoot><tr style="font-size:9px">
-			<td>co umím ovládat na notebooku</td><td>co používám každý den</td><td>co ovládám</td>
-			<td>jaké nástroje používám</td><td>co studuji aktuálně</td>
-			<td>co bych rád ovládal</td><td>s čím sem se setkal/aktivně již nepoužívám</td>
-		</tr></tfoot>
-	</table>
-      </section>
-    </div> 
-    
-    <!-- EXPIRIENCIES -->
-    <div class="container">
-    	<h2>ZKUŠENOSTI</h2>
-	<div class="exp">
-	    <h3>STYRAX, 2016/02 – dosud, TEAM LEADER/JAVA DEVELOPER</h3>
-		<p>Vývoj aplikací pro Sodexo ONE (elektronizace gpc/fpc/apc papírových stravenek).</p>
-	</div>
-	<div class="exp">
-	    <h3>WINCOR-NIXDORF, 2013 – 2016/01, JAVA DEVELOPER</h3>
-	    <p>Vývoj aplikací pro retail/bankovní systémy. Řešení projektů - zpracování transakcí z terminálů/kas pro finanční instituce (banky, zpracovatele stravenek). <p>Primárně vývoj backend-u pro bankovní systémy (terminálky, banky). Poslední projekt: analýza a implementace bankovního protokolu <a href="http://www.epasorg.eu/">EPAS</a> (<a href="http://www.epasorg.eu/spip.php?rubrique101">Acquirer protocol</a>) pro bankovní systém ve Francii.</p>
-	</div>
-	<div class="exp">
-	    <h3>ELANOR, 2010 – 2013, JAVA DEVELOPER</h3>
-	    <p>Vývoj HRMS systému (eclipse rap, spring, hibernate). Dostal jsme příležitost naučit se Java jazyk a stal jsem se součástí týmu, kde jsme vytvářeli nový HRMS. Zde jsem se podílel jak na vývoji frontend, tak i  backend (servisní/dao vrstva).</p>
-	    <p>Primárně jsem vytvářel user interface jednotlivých modulů (např. číselníky, uživatelské/systémové konfigurace, role a oprávnění, uživatelé a uživatelská místa) pomocí Eclipse RAP. Servisní/dao vrstvy pro jednotlivé moduly byly spravovány pomocí Spring framework a pro přístup do databáze byl používán Hibernate. Celý systém byl navržen s ohledem na filozofii a technologii OSGI.</p>				
-	</div>
-	<div class="exp">
-	    <h3>A.S.E.I, 2006 – 2009, WEB DEVELOPER</h3>
-	    <p>Vývoj frontendu HRMS systému (xslt, xml, html, javascript, ajax, css). Podílel jsem se na vývoji několika modulů (personální marketing, cestovní příkazy, dovolená, vzdělávání aj.), pro které jsem psal xslt šablony, transformující bussiness data do html a pdf.</p>
-	</div>    	
-    </div>
-    
-    <!-- KNOWLEDGE -->
-    <div class="container">
-    	<h2>VZDĚLÁNÍ</h2>
-	<p>Integrovaná střední škola technická, Management strojírenství (1994-1998)</p>   	
-    </div>
-    
-    <div class="container">
-    	<h2>JAZYKY</h2>
-	<p>Angličtina - slovem i písmem, chvalitebně</p>   	
-    </div>
-    
-    <div class="container">
-    	<h2>OSTATNÍ</h2>
-	<p>Řidičský průkaz B, webový design (gimp, inkscape), php & mysql (soukromé projekty).</p>
-    </div>    
-  </body>
+#avatar {
+	border-radius: 50%;
+	width: 75%;
+	padding: 10% 0%;
+}
+</style>
+</head>
+<body>
+
+
+
+
+<div class="row">
+  <h1>Java developer<a href="#skill">#</a></h1>
+  <div class="column" style="text-align: center;">
+    <img id="avatar" src="https://tomascejka.github.io/images/avatar.jpg"/>
+	<p id="bxfooter"><a href="https://cz.linkedin.com/in/tomascejka/">linkedin</a> | <a href="https://github.com/tomascejka">github</a> | <a href="https://twitter.com/tomascejka">twitter</a></p>
+  </div>
+  <div class="column">
+    <h2><a name="about-me">Bio</a></h2>
+	<p>Jmenuji se Tomáš Čejka a jsem z <a title="Konkrétně z města Písku" href="https://cs.wikipedia.org/wiki/P%C3%ADsek_%28m%C4%9Bsto%29">jižních Čech</a>.</p><p>Je mi <script>document.write(new Date().getFullYear()-1980)</script> let, jsem šťasně <a href="https://www.facebook.com/karolina.malkova.3" title="s Karolínou Čejkovu (rozenou Málkovou)">ženatý</a>, hrdý <span class="detail" title="za pár týdnů počtvrté - opět holčička :)">otec</span> (Julinka, Johanka a Justýnka) a můžeme si tykat.</p>	
+  </div>
+  <div class="column">
+    <h2>Kdo jsem</h2>
+	<p>Minimalista, idealista, pracovitý, <span class="detail" title="praktik GTD, nyní ZTD">flexibilní</span>, dotáhnu věci do konce.</p><p>Rád zkouším nové věci a nebojím se změn. Miluji ticho.</p>
+  </div>
+  <div class="column">
+    <h2>Co mě baví</h2>
+    <p>Práci <span class="detail" title="bash / cmd, maven archetypy mi nejsou cizí">automatizuji</span>, ideálně průběžně <a href="https://sourcemaking.com/refactoring" title="Ne každý projekt manager chápe, že je to nutný process">refaktoruji</a> a to <span class="detail" title="noční kodebijec">sám</span> anebo v <span class="detail" title="tahám za ráhna stejnětak, když je bouře/slunečno">týmu</span>.</p>
+    <p>Oblíbil jsem si cloud technologie a <a href="https://sourcemaking.com/design_patterns/strategy"><span class="detail" title="Mám rád možnost volby - a měnit algoritmus dle potřeby/konfigurace">Strategy pattern</span></a>. Běh, plávání, hra na bicí.</p>
+  </div>
+</div>
+
+<div class="row">Co čekám od Vás? ... že mě někam posunete (<span class="detail" title="Tohle chci umět/naučit se jako když Baťa seká cvičky...">Docker/Kubernetes</span>, <span class="detail" title="Pokud ovládáte DDD, tak pak budu chtít znát, jak navrhovat EventSourcing, Eventy struktury/procesy apod.">Domain Driven Development</span>s). Já nabízím zapáleného snílka (který sní o <span class="detail" title="Zde mám mezery - Grafana/prometheus znám - ale strategie dobrého monitoringu/zatím moc ne - rád se přiučím">zmonitorované</span> <span class="detail" title="failover, circuit-breaker mi nejsou cizí">bezvýpadkové</span> a dobře <span class="detail" title="Dobré logování nestačí - CorrelationId, také ne... i zde mám mezery">trasované</span> infrastruktuře) Dále mám rád <span class="detail" title="API Management sice není distribuovaná věc, ale zpřehlední produkt">konzistentní/zdokumentované</span> API a <span class="detail" title="Ano pane ministře, Hallo Hallo, Červený trpaslík - mé oblíbené seriály">anglický</span> humor. Reference/Zkušenosti (podrobněji popsané) <a href="#actual-ref">níže</a>.</div>
+
+<div class="row">
+  <div class="column2">
+    <h2>Praxe</h2>
+	<h3><a href="https://styrax.cz" name="actual-ref">STYRAX</a>, 2016 - dosud, TEAM LEADER</h3>
+	<p>Sodexo - vedení malého teamu a implementace elektronizace papírových stravenek pro volný čas (FPC/APC) - snaha o modularizovaný/distribuovaný systém.</p>
+	<hr/>
+	<h3><a href="http://www.wincor-nixdorf.com/internet/site_EN/EN/Home/homepage_node.html">WINCOR-NIXDORF</a>, 2013 – 2016, JAVA DEVELOPER</h3>
+	<p>Vývoj aplikací pro zpracování transakcí z terminálů/kas pro finanční instituce (banky, zpracovatele stravenek) - heavyweight EJB/<a href="https://en.wikipedia.org/wiki/Java_EE_Connector_Architecture" title="Java EE Connector Architecture">JCA</a> aplikace.</p>
+	<hr/>
+	<h3><a href="http://www.elanor.cz/index.php">ELANOR</a>, 2010 – 2013, JAVA DEVELOPER</h3>
+	<p>Vývoj nového HRMS systému s tím, že jsem dostal příležitost se naučit se Java jazyk (zajímavý stack: Spring/<a href="https://www.eclipse.org/rap/">Eclipse RAP/RCP</a>).</p>
+	<h3>A.S.E.I, 2006 – 2009, WEB DEVELOPER</h3>
+	<hr/>
+	<p>Vývoj frontendu HRMS systému na straně klienta (html,css,javascript,xslt).</p>
+  </div>
+  <div class="column2">
+    <h2><a name="skill">Zkušenosti</a></h2>
+    Java SE/EE developer pro vývoj backendových aplikací.
+    <h3>Aktuální</h3>
+    <ul class="hobby">
+		<li><span class="detail" title="Preferuji Xubuntu">Linux</span>, <span class="detail" title="Pokud je to nutné - pak Windows 7">Windows</span></li>
+		<li>JAXB, WSDL, XSD, XML, XPath</li>
+		<li>SQL, Hibernate</li>
+		<li>SVN, Jenkins, Nexus, Flyway, Maven, Wildlfly</li>
+	</ul>
+    <h3>Dříve/v-minulosti</h3>
+    <ul class="hobby">
+		<li>XSLT, XPath</li>
+		<li>Oracle, Liquidbase, MyBatis</li>
+		<li>Eclipse RAP/RCP, Spring (core/xml-based)</li>
+		<li>Git, Glassfish, Tomcat</li>
+	</ul>
+  </div>
+</div>
+
+<div class="row">
+	<p>Pokud jste dočetli až sem - jsem rád, že jsem Vás zaujal, kontakt: job.tomascejka@post.cz. Návrat <a href="#about-me">nahoru</a></p>
+</div>
+</body>
 </html>

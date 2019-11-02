@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JBake</title>
+    <link>http://localhost:8820</link>
+    <atom:link href="http://localhost:8820/feed.xml" rel="self" type="application/rss+xml" />
+    <description>JBake Bootstrap Template</description>
+    <language>en-gb</language>
+    <pubDate>ne, 3 lis 2019 00:18:35 +0100</pubDate>
+    <lastBuildDate>ne, 3 lis 2019 00:18:35 +0100</lastBuildDate>
+
+    <item>
+      <title>Změna je život</title>
+      <link>http://localhost:8820/blog/2019/0001-zmena-je-zivot.html</link>
+      <pubDate>so, 2 lis 2019 00:00:00 +0100</pubDate>
+      <guid isPermaLink="false">blog/2019/0001-zmena-je-zivot.html</guid>
+      	<description>
+	&lt;p&gt;Můj život se čím dál tím více komplikoval a bylo složité se věnovat více rodině (jakákoli domácí práce, oprava čehokoli, nebo se naučit něco nového), protože jsem hodně pracoval.&lt;/p&gt;
+&lt;p&gt;Nejdřívě jsem se snažil o lepší organizaci práce - zkusil jsem výbornou metodiku GTD, ale způsob organizace práce mě také vyčerpávala (kromě GTD jsem prostě stále hodně pracoval).&lt;/p&gt;
+&lt;p&gt;Problém nebyl v GTD metodice - ale &lt;strong&gt;ve mě&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Přiznat si výše uvedené trvalo téměř rok a půl. Uvědomil jsem si, že hledám prostou jednoduchost / a selekci důležitých (ale opravdu důležitých) úkolů (nikoli lepší sebeorganizaci).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Tato věta uzrála v momentě, kdy jsem narazil na knihu Zen a hotovo (&lt;a href=&quot;https://www.melvil.cz/kniha-zen-a-hotovo/&quot;&gt;1&lt;/a&gt;,&lt;a href=&quot;https://zenhabits.net/&quot;&gt;2&lt;/a&gt;)a výstupem jsou tyto myšlenky:&lt;/p&gt;
+&lt;p&gt;A. (kritické) třídění je o výběru důležitého od méně důležitého (zahodit)&lt;br /&gt;
+B. (důležité) plánuj v delším horizontu (roční úkol - ideálně pouze jeden sen/cíl, pak rozpad do týdnů)&lt;br /&gt;
+C. (doporučení) zjednodušuj postup (kdykoli / opakovaně - i na to, co už si jednou zjednodušil).&lt;/p&gt;
+&lt;p&gt;No a pak už je jenom krůček k &lt;strong&gt;minimalismu&lt;/strong&gt; (&lt;a href=&quot;https://verekia.com/zeromalist/&quot;&gt;3&lt;/a&gt;,&lt;a href=&quot;https://www.theminimalists.com/minimalism/&quot;&gt;4&lt;/a&gt;).&lt;/p&gt;
+&lt;h3&gt;Zdroje&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.melvil.cz/kniha-zen-a-hotovo/&quot;&gt;https://www.melvil.cz/kniha-zen-a-hotovo/&lt;/a&gt; &amp;lt;&amp;lt; eshop s kniho Zen a hotovo&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://zenhabits.net/&quot;&gt;https://zenhabits.net/&lt;/a&gt; &amp;lt;&amp;lt; blog autora ZTD - Leo Babauta&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://verekia.com/zeromalist/&quot;&gt;https://verekia.com/zeromalist/&lt;/a&gt; &amp;lt;&amp;lt; zajímavé a inspirující čtení o zjednodušení od Verekia&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.theminimalists.com/minimalism/&quot;&gt;https://www.theminimalists.com/minimalism/&lt;/a&gt; &amp;lt;&amp;lt; co to je minimalismus&lt;/li&gt;
+&lt;/ol&gt;
+
+	</description>
+    </item>
+    <item>
+      <title>Nultý příspěvek</title>
+      <link>http://localhost:8820/blog/2019/0000-nulty-prispevek.html</link>
+      <pubDate>út, 1 říj 2019 00:00:00 +0200</pubDate>
+      <guid isPermaLink="false">blog/2019/0000-nulty-prispevek.html</guid>
+      	<description>
+	&lt;p&gt;Ahoj jmenuji se &lt;a href=&quot;about.html&quot;&gt;Tomáš&lt;/a&gt; a myšlenka začít psát je velmi stará. Měl jsem jasno pouze v tom, že obsah musí být minimálně prostý text (max. &lt;a href=&quot;https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet&quot;&gt;markdown&lt;/a&gt;) a namísto správce obsahu, chci generátor jednoduchých stránek (s velmi triviálním css stylopisem).&lt;/p&gt;
+&lt;p&gt;Nejtěžší však bylo znova začít (mnohokrát jsem začal a skončil). Vždycky jsem řešil vše okolo (jaký CMS, pluginy, design apod.) - ne samotné psaní.&lt;/p&gt;
+&lt;p&gt;Inspirací a témat je dost, ale psát čtivě / bez kudrlinek - to je umění. Nechám se překvapit...&lt;/p&gt;
+
+	</description>
+    </item>
+
+  </channel> 
+</rss>

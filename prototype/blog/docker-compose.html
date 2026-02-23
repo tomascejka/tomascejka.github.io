@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docker compose pro lokální vývoj — Tomáš Čejka</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>var t=localStorage.getItem('theme');if(t)document.documentElement.classList.add(t)</script>
+</head>
+<body class="page">
+  <button class="theme-toggle" aria-label="Přepnout režim">☀</button>
+
+  <section>
+    <a href="../blog.html" class="back-link">← Zpět</a>
+    <h1>Docker compose pro lokální vývoj</h1>
+    <div class="post-meta">
+      <time class="date">3. prosince 2025</time>
+      <span class="separator">|</span>
+      <span class="tag">docker</span>
+    </div>
+
+    <div class="article">
+      <p>Jeden soubor, jeden příkaz, celé prostředí běží. Databáze, cache, message broker — všechno v docker-compose.yml. Žádné „u mě to funguje".</p>
+      <p>Nový člen týmu spustí <code>docker compose up</code> a za minutu má identické prostředí jako všichni ostatní. Žádná instalace, žádná konfigurace, žádné ztracené odpoledne.</p>
+    </div>
+
+    <p class="category">category: tips</p>
+
+    <div class="read-next">
+      <h2>Co dále</h2>
+      <ul>
+        <li><a href="branch-strategie.html">Branch strategie pro malé teamy</a> <span class="tag">git</span> <span class="tag">workflow</span></li>
+        <li><a href="code-review.html">Code review bez dramatů</a> <span class="tag">git</span> <span class="tag">workflow</span></li>
+        <li><a href="prototypuj-chytre.html">Jak prototypovat</a> <span class="tag">workflow</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    const btn = document.querySelector('.theme-toggle');
+    const html = document.documentElement;
+    btn.textContent = html.classList.contains('dark') || (!localStorage.getItem('theme') && matchMedia('(prefers-color-scheme: dark)').matches) ? '☀' : '☾';
+    btn.addEventListener('click', () => {
+      const isDark = html.classList.contains('dark') || (!html.classList.contains('light') && matchMedia('(prefers-color-scheme: dark)').matches);
+      html.classList.remove('light', 'dark');
+      const next = isDark ? 'light' : 'dark';
+      html.classList.add(next);
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀' : '☾';
+    });
+  </script>
+</body>
+</html>

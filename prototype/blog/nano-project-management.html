@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project management v CLI — jde to — Tomáš Čejka</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>var t=localStorage.getItem('theme');if(t)document.documentElement.classList.add(t)</script>
+</head>
+<body class="page">
+  <button class="theme-toggle" aria-label="Přepnout režim">☀</button>
+
+  <section>
+    <a href="../blog.html" class="back-link">← Zpět</a>
+    <h1>Project management v CLI — jde to</h1>
+    <div class="post-meta">
+      <time class="date">7. února 2026</time>
+      <span class="separator">|</span>
+      <span class="tag">workflow</span>
+    </div>
+
+    <div class="article">
+      <p>Stačí adresář <code>~/Projects</code> se strukturou zákazka/projekt a <a href="#">prj.py</a>. Každý projekt má svůj <code>PROJECT.yaml</code> s backlogem, next steps a changelogem.</p>
+<pre><code>~/Projects/
+  redhat/            ← zákazka
+    ├── golang_http/ ← projekt
+    └── docker_man/  ← projekt</code></pre>
+      <p>Děláš více projektů současně? Rychle zapiš nápad, přepni se a vrať se bez ztráty kontextu. Žádné zapomenuté nápady, žádné ztracené odpoledne.</p>
+
+<pre><code>prj - Správce projektů
+
+Použití: prj &lt;příkaz&gt; [argumenty]
+
+Struktura: ~/Projects/&lt;zákazka&gt;/&lt;projekt&gt;/PROJECT.yaml
+
+Příkazy:
+  list                              Vypíše všechny projekty
+  stats                             Zobrazí stav všech projektů
+  show &lt;projekt&gt;                    Zobrazí detail projektu
+  create                            Vytvoří nový projekt (interaktivně)
+  rename &lt;starý&gt; &lt;nový&gt;             Přejmenuje/přesune projekt
+  check &lt;projekt&gt;                   Ověří strukturu PROJECT.yaml
+  migrate [projekt]                 Migruje README.md → PROJECT.yaml
+  readme &lt;projekt&gt; | --all          Regeneruje README.md z PROJECT.yaml
+
+  task &lt;projekt&gt;                    Zobrazí backlog
+  task add &lt;projekt&gt; "úkol"         Přidá úkol do backlogu
+  task next &lt;projekt&gt; &lt;číslo&gt;       Přesune z backlogu do Next steps
+  task done &lt;projekt&gt; &lt;číslo&gt;       Dokončí úkol → changelog
+
+  log &lt;projekt&gt;                     Zobrazí changelog
+  log add &lt;projekt&gt; "zpráva"        Přidá záznam do changelogu</code></pre>
+    </div>
+
+    <p class="category">category: tips</p>
+
+    <div class="read-next">
+      <h2>Co dále</h2>
+      <ul>
+        <li><a href="prototypuj-chytre.html">Prototypuj chytře — malé iterace</a> <span class="tag">workflow</span></li>
+        <li><a href="branch-strategie.html">Branch strategie pro malé teamy</a> <span class="tag">git</span> <span class="tag">workflow</span></li>
+        <li><a href="docker-compose.html">Docker compose pro lokální vývoj</a> <span class="tag">docker</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    const btn = document.querySelector('.theme-toggle');
+    const html = document.documentElement;
+    btn.textContent = html.classList.contains('dark') || (!localStorage.getItem('theme') && matchMedia('(prefers-color-scheme: dark)').matches) ? '☀' : '☾';
+    btn.addEventListener('click', () => {
+      const isDark = html.classList.contains('dark') || (!html.classList.contains('light') && matchMedia('(prefers-color-scheme: dark)').matches);
+      html.classList.remove('light', 'dark');
+      const next = isDark ? 'light' : 'dark';
+      html.classList.add(next);
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀' : '☾';
+    });
+  </script>
+</body>
+</html>

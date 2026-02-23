@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skills — Tomáš Čejka</title>
+  <link rel="stylesheet" href="style.css">
+  <script>var t=localStorage.getItem('theme');if(t)document.documentElement.classList.add(t)</script>
+</head>
+<body class="page">
+  <button class="theme-toggle" aria-label="Přepnout režim">☀</button>
+
+  <section>
+    <a href="index.html" class="back-link">← Zpět</a>
+    <h1>Skills</h1>
+
+    <ul class="skill-list">
+      <li class="skill-item"><span class="skill-name">Java</span> <span class="skill-desc">— 10+ let, enterprise systémy, Jakarta EE / Spring Boot</span></li>
+      <li class="skill-item"><span class="skill-name">Python</span> <span class="skill-desc">— keeper: zálohovací aplikace pro konfigurace linek v automotive, různé nástroje/skripty</span></li>
+      <li class="skill-item"><span class="skill-name">SQL</span> <span class="skill-desc">— návrh datových modelů, optimalizace dotazů</span></li>
+      <li class="skill-item"><span class="skill-name">Git</span> <span class="skill-desc">— verzování, branching strategie, code review</span></li>
+      <li class="skill-item"><span class="skill-name">Docker</span> <span class="skill-desc">— kontejnerizace, compose, CI/CD pipeline</span></li>
+      <li class="skill-item"><span class="skill-name">PowerShell</span> <span class="skill-desc">— automatizace, správa Windows prostředí</span></li>
+      <li class="skill-item"><span class="skill-name">Bash</span> <span class="skill-desc">— skripty, automatizace, Linux administrace</span></li>
+    </ul>
+
+    <h2>Open Source</h2>
+    <ul class="skill-list">
+      <li class="skill-item"><a href="https://github.com/CZERTAINLY/CZERTAINLY-Core">CZERTAINLY</a> <span class="skill-desc">— implementace <a href="https://datatracker.ietf.org/doc/html/rfc4210">CMP protokolu</a> pro správu certifikátů (Spring Boot)</span></li>
+    </ul>
+  </section>
+
+  <script>
+    const btn = document.querySelector('.theme-toggle');
+    const html = document.documentElement;
+    btn.textContent = html.classList.contains('dark') || (!localStorage.getItem('theme') && matchMedia('(prefers-color-scheme: dark)').matches) ? '☀' : '☾';
+    btn.addEventListener('click', () => {
+      const isDark = html.classList.contains('dark') || (!html.classList.contains('light') && matchMedia('(prefers-color-scheme: dark)').matches);
+      html.classList.remove('light', 'dark');
+      const next = isDark ? 'light' : 'dark';
+      html.classList.add(next);
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀' : '☾';
+    });
+  </script>
+</body>
+</html>

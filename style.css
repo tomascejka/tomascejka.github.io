@@ -381,3 +381,10 @@ pre code {
   border: none;
   padding: 0;
 }
+
+.services {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}

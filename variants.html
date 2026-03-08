@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vizitka - Barevné varianty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 40px;
+  }
+
+  h2.section-title {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .cards {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .label {
+    text-align: center;
+    font-size: 10px;
+    color: #999;
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .card {
+    width: 85mm;
+    height: calc(55mm + 5px);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6mm;
+  }
+
+  .card .avatar {
+    width: 16mm;
+    height: 16mm;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 2.5mm;
+  }
+
+  .card .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card .name-row {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17.5pt;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .card .bio {
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    font-weight: 300;
+    line-height: 1.4;
+    margin-top: 2mm;
+    max-width: 60mm;
+  }
+
+  .card .contact-line {
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin-top: 2mm;
+  }
+
+  .card .services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5mm 2mm;
+    padding: 0 8mm;
+    margin-top: 2mm;
+  }
+
+  .card .services span {
+    font-family: 'Inter', sans-serif;
+    font-size: 9.5pt;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  .card .back-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17.5pt;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .card .back-web {
+    font-family: 'Inter', sans-serif;
+    font-size: 8pt;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin-top: 2mm;
+  }
+
+  .card .services .underline {
+    padding-bottom: 0.3mm;
+  }
+
+  .card.front-layout {
+    padding: 0;
+    position: relative;
+  }
+
+  .card .highlight {
+    position: absolute;
+    top: 21mm;
+    left: 0;
+    right: 0;
+    bottom: 12mm;
+    background: rgba(0, 0, 0, 0.035);
+  }
+
+  .card .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1mm 6mm 9mm;
+  }
+
+  .card .content .bio {
+    margin-top: 0.5mm;
+  }
+
+  .card .content .contact-line {
+    position: absolute;
+    bottom: 4.5mm;
+  }
+
+  /* ======================== */
+  /*          LIGHT           */
+  /* ======================== */
+
+  .light { background: #fff; border: 0.2mm solid #e0e0e0; }
+  .light .name-row { color: #1a1a1a; }
+  .light .bio { color: #999; }
+  .light .contact-line { color: #666; }
+  .light .contact-line .sep { color: #ccc; }
+  .light .back-name { color: #1a1a1a; }
+  .light .services span { color: #999; }
+  .light .services .dot { color: #ccc; }
+  .light .services .underline { border-bottom: 0.3mm solid #ccc; }
+  .light .back-web { color: #666; }
+
+  /* ======================== */
+  /*          DARK            */
+  /* ======================== */
+
+  .dark { background: #111; }
+  .dark .highlight { background: rgba(255, 255, 255, 0.03); }
+  .dark .name-row { color: #e0e0e0; }
+  .dark .bio { color: #999; }
+  .dark .contact-line { color: #999; }
+  .dark .contact-line .sep { color: #555; }
+  .dark .back-name { color: #e0e0e0; }
+  .dark .services span { color: #999; }
+  .dark .services .dot { color: #555; }
+  .dark .services .underline { border-bottom: 0.3mm solid #666; }
+  .dark .back-web { color: #999; }
+
+  /* ======================== */
+  /*         STEEL            */
+  /* ======================== */
+
+  .steel { background: #4a5568; }
+  .steel .highlight { background: rgba(255, 255, 255, 0.03); }
+  .steel .name-row { color: #e2e8f0; }
+  .steel .bio { color: #a0aec0; }
+  .steel .contact-line { color: #cbd5e0; }
+  .steel .contact-line .sep { color: #718096; }
+  .steel .back-name { color: #e2e8f0; }
+  .steel .services span { color: #a0aec0; }
+  .steel .services .dot { color: #718096; }
+  .steel .services .underline { border-bottom: 0.3mm solid #718096; }
+  .steel .back-web { color: #cbd5e0; }
+
+  /* ======================== */
+  /*       STEEL LIGHT        */
+  /* ======================== */
+
+  .steel-light { background: #718096; }
+  .steel-light .highlight { background: rgba(255, 255, 255, 0.04); }
+  .steel-light .name-row { color: #fff; }
+  .steel-light .bio { color: rgba(255,255,255,0.7); }
+  .steel-light .contact-line { color: rgba(255,255,255,0.85); }
+  .steel-light .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .steel-light .back-name { color: #fff; }
+  .steel-light .services span { color: rgba(255,255,255,0.7); }
+  .steel-light .services .dot { color: rgba(255,255,255,0.4); }
+  .steel-light .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.45); }
+  .steel-light .back-web { color: rgba(255,255,255,0.85); }
+
+  /* ======================== */
+  /*      STEEL PASTEL        */
+  /* ======================== */
+
+  .steel-pastel { background: #a0aec0; }
+  .steel-pastel .highlight { background: rgba(0, 0, 0, 0.04); }
+  .steel-pastel .name-row { color: #1a202c; }
+  .steel-pastel .bio { color: #2d3748; }
+  .steel-pastel .contact-line { color: #2d3748; }
+  .steel-pastel .contact-line .sep { color: #718096; }
+  .steel-pastel .back-name { color: #1a202c; }
+  .steel-pastel .services span { color: #2d3748; }
+  .steel-pastel .services .dot { color: #718096; }
+  .steel-pastel .services .underline { border-bottom: 0.3mm solid #718096; }
+  .steel-pastel .back-web { color: #2d3748; }
+
+  /* ======================== */
+  /*    TURQUOISE PASTEL      */
+  /* ======================== */
+
+  .turquoise { background: #a8dcd9; }
+  .turquoise .highlight { background: rgba(0, 0, 0, 0.04); }
+  .turquoise .name-row { color: #1a3a38; }
+  .turquoise .bio { color: #3a5e5b; }
+  .turquoise .contact-line { color: #2a4a48; }
+  .turquoise .contact-line .sep { color: #6db5b0; }
+  .turquoise .back-name { color: #1a3a38; }
+  .turquoise .services span { color: #3a5e5b; }
+  .turquoise .services .dot { color: #6db5b0; }
+  .turquoise .services .underline { border-bottom: 0.3mm solid #6db5b0; }
+  .turquoise .back-web { color: #2a4a48; }
+
+  /* ======================== */
+  /*       DUSTY ROSE         */
+  /* ======================== */
+
+  .rose { background: #c4787a; }
+  .rose .highlight { background: rgba(0, 0, 0, 0.06); }
+  .rose .name-row { color: #fff; }
+  .rose .bio { color: rgba(255,255,255,0.7); }
+  .rose .contact-line { color: rgba(255,255,255,0.85); }
+  .rose .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .rose .back-name { color: #fff; }
+  .rose .services span { color: rgba(255,255,255,0.7); }
+  .rose .services .dot { color: rgba(255,255,255,0.35); }
+  .rose .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .rose .back-web { color: rgba(255,255,255,0.85); }
+
+  /* ======================== */
+  /*         SALMON           */
+  /* ======================== */
+
+  .salmon { background: #faa898; }
+  .salmon .highlight { background: rgba(0, 0, 0, 0.06); }
+  .salmon .name-row { color: #fff; }
+  .salmon .bio { color: rgba(255,255,255,0.75); }
+  .salmon .contact-line { color: rgba(255,255,255,0.88); }
+  .salmon .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .salmon .back-name { color: #fff; }
+  .salmon .services span { color: rgba(255,255,255,0.75); }
+  .salmon .services .dot { color: rgba(255,255,255,0.35); }
+  .salmon .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .salmon .back-web { color: rgba(255,255,255,0.88); }
+
+  /* ======================== */
+  /*       SALMON LIGHT       */
+  /* ======================== */
+
+  .salmon-light { background: #fdd0c8; }
+  .salmon-light .highlight { background: rgba(0, 0, 0, 0.04); }
+  .salmon-light .name-row { color: #4a2520; }
+  .salmon-light .bio { color: #7a5550; }
+  .salmon-light .contact-line { color: #5a3530; }
+  .salmon-light .contact-line .sep { color: #e8a89e; }
+  .salmon-light .back-name { color: #4a2520; }
+  .salmon-light .services span { color: #7a5550; }
+  .salmon-light .services .dot { color: #e8a89e; }
+  .salmon-light .services .underline { border-bottom: 0.3mm solid #e8a89e; }
+  .salmon-light .back-web { color: #5a3530; }
+
+  /* ======================== */
+  /*        FLAMINGO          */
+  /* ======================== */
+
+  .flamingo { background: #fc8eac; }
+  .flamingo .highlight { background: rgba(0, 0, 0, 0.06); }
+  .flamingo .name-row { color: #fff; }
+  .flamingo .bio { color: rgba(255,255,255,0.75); }
+  .flamingo .contact-line { color: rgba(255,255,255,0.88); }
+  .flamingo .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .flamingo .back-name { color: #fff; }
+  .flamingo .services span { color: rgba(255,255,255,0.75); }
+  .flamingo .services .dot { color: rgba(255,255,255,0.35); }
+  .flamingo .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .flamingo .back-web { color: rgba(255,255,255,0.88); }
+
+  /* ======================== */
+  /*      FLAMINGO SALMON     */
+  /* ======================== */
+
+  .flalmon { background: #fb9ba2; }
+  .flalmon .highlight { background: rgba(0, 0, 0, 0.06); }
+  .flalmon .name-row { color: #fff; }
+  .flalmon .bio { color: rgba(255,255,255,0.75); }
+  .flalmon .contact-line { color: rgba(255,255,255,0.88); }
+  .flalmon .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .flalmon .back-name { color: #fff; }
+  .flalmon .services span { color: rgba(255,255,255,0.75); }
+  .flalmon .services .dot { color: rgba(255,255,255,0.35); }
+  .flalmon .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .flalmon .back-web { color: rgba(255,255,255,0.88); }
+
+  /* ======================== */
+  /*   FLAMINGO SALMON LIGHT  */
+  /* ======================== */
+
+  .flalmon-light { background: #fdc0c5; }
+  .flalmon-light .highlight { background: rgba(0, 0, 0, 0.04); }
+  .flalmon-light .name-row { color: #4a2028; }
+  .flalmon-light .bio { color: #7a4a52; }
+  .flalmon-light .contact-line { color: #5a3038; }
+  .flalmon-light .contact-line .sep { color: #e8959c; }
+  .flalmon-light .back-name { color: #4a2028; }
+  .flalmon-light .services span { color: #7a4a52; }
+  .flalmon-light .services .dot { color: #e8959c; }
+  .flalmon-light .services .underline { border-bottom: 0.3mm solid #e8959c; }
+  .flalmon-light .back-web { color: #5a3038; }
+
+  /* ======================== */
+  /*          NAVY            */
+  /* ======================== */
+
+  .navy { background: #1e3a5f; }
+  .navy .highlight { background: rgba(0, 0, 0, 0.08); }
+  .navy .name-row { color: #fff; }
+  .navy .bio { color: rgba(255,255,255,0.7); }
+  .navy .contact-line { color: rgba(255,255,255,0.85); }
+  .navy .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .navy .back-name { color: #fff; }
+  .navy .services span { color: rgba(255,255,255,0.7); }
+  .navy .services .dot { color: rgba(255,255,255,0.35); }
+  .navy .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .navy .back-web { color: rgba(255,255,255,0.85); }
+
+
+  /* ======================== */
+  /*          PLUM            */
+  /* ======================== */
+
+  .plum { background: #6b3a6b; }
+  .plum .highlight { background: rgba(0, 0, 0, 0.08); }
+  .plum .name-row { color: #fff; }
+  .plum .bio { color: rgba(255,255,255,0.7); }
+  .plum .contact-line { color: rgba(255,255,255,0.85); }
+  .plum .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .plum .back-name { color: #fff; }
+  .plum .services span { color: rgba(255,255,255,0.7); }
+  .plum .services .dot { color: rgba(255,255,255,0.35); }
+  .plum .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .plum .back-web { color: rgba(255,255,255,0.85); }
+
+  /* ======================== */
+  /*         CORAL            */
+  /* ======================== */
+
+  .coral { background: #e07a5f; }
+  .coral .highlight { background: rgba(0, 0, 0, 0.06); }
+  .coral .name-row { color: #fff; }
+  .coral .bio { color: rgba(255,255,255,0.7); }
+  .coral .contact-line { color: rgba(255,255,255,0.85); }
+  .coral .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .coral .back-name { color: #fff; }
+  .coral .services span { color: rgba(255,255,255,0.7); }
+  .coral .services .dot { color: rgba(255,255,255,0.35); }
+  .coral .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .coral .back-web { color: rgba(255,255,255,0.85); }
+
+  /* ======================== */
+  /*      FOREST GREEN        */
+  /* ======================== */
+
+  .forest { background: #2d6a4f; }
+  .forest .highlight { background: rgba(0, 0, 0, 0.08); }
+  .forest .name-row { color: #fff; }
+  .forest .bio { color: rgba(255,255,255,0.7); }
+  .forest .contact-line { color: rgba(255,255,255,0.85); }
+  .forest .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .forest .back-name { color: #fff; }
+  .forest .services span { color: rgba(255,255,255,0.7); }
+  .forest .services .dot { color: rgba(255,255,255,0.35); }
+  .forest .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .forest .back-web { color: rgba(255,255,255,0.85); }
+
+  /* ======================== */
+  /*        EMERALD           */
+  /* ======================== */
+
+  .emerald { background: #2e8b57; }
+  .emerald .highlight { background: rgba(0, 0, 0, 0.08); }
+  .emerald .name-row { color: #fff; }
+  .emerald .bio { color: rgba(255,255,255,0.7); }
+  .emerald .contact-line { color: rgba(255,255,255,0.85); }
+  .emerald .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .emerald .back-name { color: #fff; }
+  .emerald .services span { color: rgba(255,255,255,0.7); }
+  .emerald .services .dot { color: rgba(255,255,255,0.35); }
+  .emerald .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .emerald .back-web { color: rgba(255,255,255,0.85); }
+
+
+  /* ======================== */
+  /*        MUSTARD           */
+  /* ======================== */
+
+  .mustard { background: #c5a030; }
+  .mustard .highlight { background: rgba(0, 0, 0, 0.06); }
+  .mustard .name-row { color: #fff; }
+  .mustard .bio { color: rgba(255,255,255,0.7); }
+  .mustard .contact-line { color: rgba(255,255,255,0.85); }
+  .mustard .contact-line .sep { color: rgba(255,255,255,0.4); }
+  .mustard .back-name { color: #fff; }
+  .mustard .services span { color: rgba(255,255,255,0.7); }
+  .mustard .services .dot { color: rgba(255,255,255,0.35); }
+  .mustard .services .underline { border-bottom: 0.3mm solid rgba(255,255,255,0.5); }
+  .mustard .back-web { color: rgba(255,255,255,0.85); }
+
+  /* ======================== */
+  /*         IVORY            */
+  /* ======================== */
+
+  /* ======================== */
+  /*       PISTACHIO          */
+  /* ======================== */
+
+  .pistachio { background: #c8e6a2; }
+  .pistachio .highlight { background: rgba(0, 0, 0, 0.04); }
+  .pistachio .name-row { color: #1e2a12; }
+  .pistachio .bio { color: #354a24; }
+  .pistachio .contact-line { color: #2a3c1a; }
+  .pistachio .contact-line .sep { color: #7a9a58; }
+  .pistachio .back-name { color: #1e2a12; }
+  .pistachio .services span { color: #354a24; }
+  .pistachio .services .dot { color: #7a9a58; }
+  .pistachio .services .underline { border-bottom: 0.3mm solid #7a9a58; }
+  .pistachio .back-web { color: #2a3c1a; }
+
+  .ivory { background: #f5f0e1; border: 0.2mm solid #e0d8c8; }
+  .ivory .highlight { background: rgba(0, 0, 0, 0.04); }
+  .ivory .name-row { color: #3a3225; }
+  .ivory .bio { color: #8a7e6b; }
+  .ivory .contact-line { color: #5a5040; }
+  .ivory .contact-line .sep { color: #c8bfa8; }
+  .ivory .back-name { color: #3a3225; }
+  .ivory .services span { color: #8a7e6b; }
+  .ivory .services .dot { color: #c8bfa8; }
+  .ivory .services .underline { border-bottom: 0.3mm solid #c8bfa8; }
+  .ivory .back-web { color: #5a5040; }
+
+  .print-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    justify-content: center;
+    max-width: 600px;
+  }
+
+  .print-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #555;
+    text-decoration: none;
+    padding: 4px 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+    transition: all 0.15s;
+  }
+
+  .print-links a:hover {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+  }
+
+  @media print {
+    body { background: white; padding: 10mm; }
+    .card { page-break-inside: avoid; }
+    h2.section-title, .label { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ====================== -->
+  <!--     DO TISKU / PRINT    -->
+  <!-- ====================== -->
+  <h2 class="section-title" style="font-size: 14px; color: #333; margin-bottom: 20px;">Do tisku</h2>
+
+  <div class="print-links">
+    <a href="#light">Light</a>
+    <a href="#turquoise">Turquoise Pastel</a>
+    <a href="#salmon-light">Salmon Light</a>
+    <a href="#pistachio">Pistachio</a>
+  </div>
+
+  <hr style="width: 80%; max-width: 600px; border: none; border-top: 2px solid #ccc; margin: 30px 0;">
+
+  <!-- ====================== -->
+  <!--        KATALOG          -->
+  <!-- ====================== -->
+  <h2 class="section-title" style="font-size: 14px; color: #333; margin-bottom: 20px;">Katalog variant</h2>
+
+  <!-- LIGHT -->
+  <h2 class="section-title" id="light">Light</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card light front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card light">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- IVORY -->
+  <h2 class="section-title" id="ivory">Ivory / Slonovinová kost</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card ivory front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card ivory">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- PISTACHIO -->
+  <h2 class="section-title" id="pistachio">Pistachio / Pistáciová</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card pistachio front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card pistachio">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- DARK -->
+  <h2 class="section-title" id="dark">Dark</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card dark front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card dark">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- STEEL -->
+  <h2 class="section-title" id="steel">Steel / Ocelová</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card steel front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card steel">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- STEEL LIGHT -->
+  <h2 class="section-title" id="steel-light">Steel Light / Ocelová světlá</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card steel-light front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card steel-light">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- STEEL PASTEL -->
+  <h2 class="section-title" id="steel-pastel">Steel Pastel / Ocelová pastelová</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card steel-pastel front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card steel-pastel">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- TURQUOISE PASTEL -->
+  <h2 class="section-title" id="turquoise">Turquoise Pastel / Tyrkysová pastelová</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card turquoise front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card turquoise">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- DUSTY ROSE -->
+  <h2 class="section-title" id="dusty-rose">Dusty Rose</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card rose front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card rose">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- SALMON -->
+  <h2 class="section-title" id="salmon">Salmon / Lososová</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card salmon front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card salmon">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- SALMON LIGHT -->
+  <h2 class="section-title" id="salmon-light">Salmon Light / Lososová světlá</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card salmon-light front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card salmon-light">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- FLAMINGO -->
+  <h2 class="section-title" id="flamingo">Flamingo / Plameňáková</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card flamingo front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card flamingo">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- FLAMINGO SALMON -->
+  <h2 class="section-title" id="flamingo-salmon">Flamingo Salmon / Plameňákový losos</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card flalmon front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card flalmon">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- FLAMINGO SALMON LIGHT -->
+  <h2 class="section-title" id="flamingo-salmon-light">Flamingo Salmon Light / Plameňákový losos světlý</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card flalmon-light front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card flalmon-light">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- CORAL -->
+  <h2 class="section-title" id="coral">Coral</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card coral front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card coral">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- MUSTARD -->
+  <h2 class="section-title" id="mustard">Mustard</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card mustard front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card mustard">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- NAVY -->
+  <h2 class="section-title" id="navy">Navy</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card navy front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card navy">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- PLUM -->
+  <h2 class="section-title" id="plum">Plum</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card plum front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card plum">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- FOREST GREEN -->
+  <h2 class="section-title" id="forest">Forest Green</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card forest front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card forest">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+  <!-- EMERALD -->
+  <h2 class="section-title" id="emerald">Emerald</h2>
+  <div class="cards">
+    <div class="card-wrap">
+      <div class="card emerald front-layout">
+        <div class="highlight"></div>
+        <div class="content">
+          <div class="avatar"><img src="avatar.jpg" alt="Tomáš Čejka"></div>
+          <div class="name-row">Tomáš Čejka</div>
+          <div class="bio">Stavím software, který posouvá váš byznys.</div>
+          <div class="contact-line">+420 733 564 533 <span class="sep">|</span> info@tomascejka.cz</div>
+        </div>
+      </div>
+      <div class="label">přední strana</div>
+    </div>
+    <div class="card-wrap">
+      <div class="card emerald">
+        <div class="back-name">Tomáš Čejka</div>
+        <div class="services">
+          <span class="underline">Architektura</span> <span class="dot">·</span>
+          <span>Programování</span> <span class="dot">·</span>
+          <span class="underline">Cloud</span> <span class="dot">·</span>
+          <span>Konzultace</span> <span class="dot">·</span>
+          <span class="underline">Analýza</span> <span class="dot">·</span>
+          <span>Školení</span>
+        </div>
+        <div class="back-web">tomascejka.github.io</div>
+      </div>
+      <div class="label">zadní strana</div>
+    </div>
+  </div>
+
+
+</body>
+</html>

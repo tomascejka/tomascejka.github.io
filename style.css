@@ -382,9 +382,10 @@ pre code {
   padding: 0;
 }
 
-.services {
-  font-size: 0.75rem;
-  color: var(--border);
+.services-header {
+  font-size: 0.95rem;
+  color: var(--fg-muted);
   margin-top: 0.5rem;
-  letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
 }

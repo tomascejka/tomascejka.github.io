@@ -383,8 +383,8 @@ pre code {
 }
 
 .services {
-  font-size: 0.85rem;
-  color: var(--fg-muted);
+  font-size: 0.75rem;
+  color: var(--border);
   margin-top: 0.5rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
 }
